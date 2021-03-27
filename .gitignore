@@ -2,9 +2,8 @@
 
 # dependencies
 node_modules
-# the above line is for node_modules in frontend directory
-node_modules/ 
-# the above line is for node_modules in root directory which has server or backend dependencies 
+node_modules/
+
 /.pnp
 .pnp.js
 
@@ -16,8 +15,7 @@ node_modules/
 
 # misc
 .DS_Store
-.env 
-# above line is for environment variable which store all the sensitive data
+.env
 .env.local
 .env.development.local
 .env.test.local
