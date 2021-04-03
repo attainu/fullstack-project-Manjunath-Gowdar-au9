@@ -25,6 +25,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
+// '/api/route' is simple restful api syntax 
 
 // to handle error from 'error_middleware.js' file
 app.use(notFound)

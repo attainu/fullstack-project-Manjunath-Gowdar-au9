@@ -35,6 +35,18 @@ userSchema.methods.matchPassword = async function(enteredPassword){
   // this.password is password stored in database
 }
 
+
+//before data is saved password is encrypted for userRegistration
+userSchema.pre('save',async function (next) {
+  if(!this.isModified('password')){
+    next() //if password is not modified in profile update, then password will not be hashed
+  }
+  //hash is combination of password and key
+  // salt is to hash password asynchronously, by using bcrypt method called genSalt, 10 is number of rounds
+  const salt = await bcrypt.genSalt(10)
+  this.password = await bcrypt.hash(this.password,salt)
+})
+
 const User = mongoose.model('User', userSchema)
 
 export default User
