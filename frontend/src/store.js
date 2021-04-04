@@ -6,14 +6,16 @@ import {
   productDetailsReducer,
 } from './reducers/productReducers.js'
 import { cartReducer } from './reducers/cartReducers'
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducers'
+import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer } from './reducers/userReducers'
 
 const reducer = combineReducers({
   productList: productListReducer, //productList is one of the state's data
   productDetails: productDetailsReducer, //productList is one of the state's data
   cart: cartReducer,
   userLogin: userLoginReducer,
-  userRegister: userRegisterReducer
+  userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
 })
 
 // initial state setup from localStorage
