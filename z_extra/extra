@@ -32,3 +32,11 @@ heroku
 https://buymax.herokuapp.com/ | https://git.heroku.com/buymax.git
  heroku git:remote -a buymax
 set git remote heroku to https://git.heroku.com/buymax.git
+
+remote: -----> Launching...
+remote:        Released v3
+remote:        https://buymax.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/buymax.git
+ * [new branch]      dev -> main

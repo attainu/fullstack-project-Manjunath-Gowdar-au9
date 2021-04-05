@@ -37,7 +37,15 @@ if (process.env.NODE_ENV === 'production') {
   //production app can be accessed from localhost:5000 on server start
 } else {
   app.get('/', (req, res) => {
-    res.send('api is running..')
+    // res.send('api is running..')
+
+    app.use(express.static(path.join(__dirname, '/frontend/build'))) //path of frontend build folder is pointed
+
+  // creating route for production for index.html file of build
+  // select all route which is not '/api' and point it to index.html
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  )
   })
 }
 
