@@ -37,8 +37,7 @@ if (process.env.NODE_ENV === 'production') {
   //production app can be accessed from localhost:5000 on server start
 } else {
   app.get('/', (req, res) => {
-    res.send('api is running..')
-
+    res.send('API is running..')
   })
 }
 
