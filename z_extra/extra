@@ -30,3 +30,5 @@ app.listen(5000, console.log('server running on port 5000'))
 
 heroku 
 https://buymax.herokuapp.com/ | https://git.heroku.com/buymax.git
+ heroku git:remote -a buymax
+set git remote heroku to https://git.heroku.com/buymax.git
