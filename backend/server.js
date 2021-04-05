@@ -2,58 +2,53 @@ import path from 'path'
 import express from 'express'
 import dotenv from 'dotenv'
 import colors from 'colors'
-// import morgan from 'morgan'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
-import connectDB from './config/db.js'
+import connectDB from './config/db.js' //mongoose
 
-import productRoutes from './routes/productRoutes.js'
-import userRoutes from './routes/userRoutes.js'
-
+import productRoutes from './routes/productRoutes.js' //external routes
+import userRoutes from './routes/userRoutes.js' //external routes
 
 dotenv.config()
 
-connectDB()
+connectDB() //mongoose
 
 const app = express()
 
-// if (process.env.NODE_ENV === 'development') {
-//   app.use(morgan('dev'))
-// }
-
+// this middleware will alow to accept json data in req.body on controllers file
 app.use(express.json())
 
+// '/api/route' is simple restful api syntax
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
-// app.use('/api/orders', orderRoutes)
-// app.use('/api/upload', uploadRoutes)
 
-// app.get('/api/config/paypal', (req, res) =>
-//   res.send(process.env.PAYPAL_CLIENT_ID)
-// )
-
+// development and production file choosing
+// __dirname is current folder path
 const __dirname = path.resolve()
-// app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/frontend/build')))
+  // creating static folder for express
+  app.use(express.static(path.join(__dirname, '/frontend/build'))) //path of frontend build folder is pointed
 
+  // creating route for production for index.html file of build
+  // select all route which is not '/api' and point it to index.html
   app.get('*', (req, res) =>
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
   )
+  //production app can be accessed from localhost:5000 on server start
 } else {
   app.get('/', (req, res) => {
-    res.send('APi is running....')
+    res.send('API is running..')
   })
 }
 
+// to handle error from 'error_middleware.js' file
 app.use(notFound)
 app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
-
 app.listen(
   PORT,
   console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+    `server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
   )
 )
