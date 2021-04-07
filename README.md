@@ -1,7 +1,7 @@
 # BuyMax e-commerce
 >click here for [MarkDown Documentation](https://github.com/attainu/fullstack-project-Manjunath-Gowdar-au9/tree/dev) (which is '.md' file)
 
-![screenshot](png)
+![screenshot](https://github.com/attainu/fullstack-project-Manjunath-Gowdar-au9/blob/dev/z_extra/Screenshot%20(2532).png?raw=true)
 
 ### Contents
 
